@@ -1,38 +1,32 @@
-.App {
-  text-align: center;
+* > body {
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.round-btn {
+  border-radius: 16px !important;
+  padding-top: 10px !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.avatar {
+  border-radius: 50%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.centered {
+  align-items: center !important;
 }
 
-.App-link {
-  color: #61dafb;
+.centered h3{
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.forgot-pass-btn {
+  color: #1678c2 !important;
 }
+
+.forgot-pass-btn :hover {
+  color: #1678c2 !important;
+  text-decoration: underline !important;
+}
+
+
