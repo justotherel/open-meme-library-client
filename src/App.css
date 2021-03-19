@@ -3,20 +3,35 @@
   box-sizing: border-box;
 }
 
+.ui.basic.button.tertiary {
+  box-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+  background: none !important;
+}
+
 .round-btn {
   border-radius: 16px !important;
   padding-top: 10px !important;
 }
 
 .avatar {
-  border-radius: 50%;
+  border-radius: 50% !important;
+  /* max-width: 100% !important;
+  max-height: 100% !important; */
+}
+
+.avatar img {
+  border-radius: 50% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
 }
 
 .centered {
   align-items: center !important;
 }
 
-.centered h3{
+.centered h3 {
   margin: 0;
 }
 
@@ -29,4 +44,11 @@
   text-decoration: underline !important;
 }
 
+.send-btn {
+  padding-left: 0px !important;
+  margin: 0px !important;
+}
 
+.comment-input-box {
+  box-shadow: none;
+}

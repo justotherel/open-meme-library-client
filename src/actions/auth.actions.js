@@ -1,9 +1,11 @@
 import * as api from "../api/index.js";
-import { ATUH } from "../constants/actionTypes";
+import { AUTH } from "../constants/actionTypes";
 
 export const signin = (formData, history) => async (dispatch) => {
   try {
-    //login
+
+    const {data} = await api.signIn(formData)
+    dispatch({type: AUTH, data})
     history.push("/");
 
   } catch (error) {
@@ -11,12 +13,15 @@ export const signin = (formData, history) => async (dispatch) => {
   }
 };
 
-export const signup = (poformData, history) => async (dispatch) => {
+export const signup = (formData, history) => async (dispatch) => {
   try {
-    //login
+
+    const {data} = await api.signUp(formData)
+    dispatch({type: AUTH, data})
     history.push("/");
 
   } catch (error) {
     console.log(error);
+    console.log(error.message)
   }
 };

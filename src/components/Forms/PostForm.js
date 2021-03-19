@@ -13,12 +13,27 @@ const PostForm = () => {
     image: "",
   });
 
+  const user = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPost(postData));
+    dispatch(
+      createPost({ ...postData, user: user?.id, username: user?.username })
+    );
   };
+
+  if (!user?.id) {
+    console.log(user);
+    return (
+      <Container style={{width: 800}}>
+        <h1>
+          Bitch you're trying to do something you're not authorized for. Get an
+          account
+        </h1>
+      </Container>
+    );
+  }
 
   return (
     <Container style={{ width: 400 }}>
@@ -42,7 +57,7 @@ const PostForm = () => {
           removeOnBackspace={true}
           tags={postData.tags}
           onChange={(newTags) => {
-            setPostData({...postData, tags: newTags});
+            setPostData({ ...postData, tags: newTags });
           }}
         />
         <Form.Field>

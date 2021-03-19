@@ -4,9 +4,6 @@ import {
   Container,
   Form,
   Card,
-  Grid,
-  Label,
-  Icon,
 } from "semantic-ui-react";
 import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
@@ -29,7 +26,6 @@ function AuthForm() {
 
   const history = useHistory()
   const dispatch = useDispatch()
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
   const [formData, setFormData] = useState(initialState)
 
   const handleRegSubmit = (e) => {

@@ -1,35 +1,34 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import { Button, Container, Dropdown, Menu } from "semantic-ui-react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import {useDispatch} from 'react-redux'
-
-
+import { useDispatch } from "react-redux";
+import decode from 'jwt-decode';
 
 import { LOGOUT } from "../constants/actionTypes";
 
-// import { AuthContext } from "../context/auth";
-
 function Navbar() {
-
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const location = useLocation()
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
 
   const logout = () => {
-    dispatch({type: LOGOUT})
-    setUser(null)
-    history.push('/')
-  }
+    dispatch({ type: LOGOUT });
+    setUser(null);
+    history.push("/");
+  };
 
   useEffect(() => {
-    const token = user?.token
-    
-    //JWT
+    const token = user?.token;
 
-    setUser(JSON.parse(localStorage.getItem('profile')))
+    if (token) {
+      const decodedToken = decode(token);
 
-  }, [location])
+      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
+
+    setUser(JSON.parse(localStorage.getItem('profile')));
+  }, [location]);
 
   const pathName = window.location.pathname;
   const path = pathName === "/" ? "home" : pathName.substr(1);
@@ -63,8 +62,12 @@ function Navbar() {
         <Menu.Menu position="right">
           {/* Needs to be changed */}
           <Menu.Item>
-            <img className='avatar' src="http://ssmaker.ru/9bfb07d5.jpg" alt="user avatar" />
-            <Dropdown item text="username">
+            <img
+              className="avatar"
+              src={user.profilePic ? user.profilePic : 'https://sun9-40.userapi.com/impf/yY2B_SB8yqDDu3GEmIQW3VcsuDXkXv6i5Yq2ZQ/nV_iFXiTmeE.jpg?size=572x572&quality=96&sign=87395866e3b4df6fb8db04990cdb89cd'}
+              alt="user avatar"
+            />
+            <Dropdown item text={user.username}>
               <Dropdown.Menu>
                 <Dropdown.Item>
                   <h5 onClick={logout}>Logout</h5>
@@ -90,7 +93,7 @@ function Navbar() {
           active={activeItem === "create post"}
           onClick={handleItemClick}
           as={Link}
-          to="/login"
+          to="/auth"
         />
         <Menu.Item
           name="friends"

@@ -1,15 +1,16 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import {Card, Icon, Label, Image, Button} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 import moment from 'moment'
 
-// import {AuthContext} from '../context/auth'
-// import LikeButton from './LikeButton'
-// import DeleteButton from './DeleteButton'
+
+import LikeButton from './Buttons/LikeButton'
+import DeleteButton from './Buttons/DeleteButton'
  
-function Post({post: {description, image, createdAt, tags, id, username, likeCount, commentCount, likes}}) {
+function Post({post: {description, image, createdAt, tags, _id, username, likeCount, commentsCount, likes}}) {
     
-    // const {user} = useContext(AuthContext)
+    const user = JSON.parse(localStorage.getItem('profile'))
+    const id = _id
 
     return (
         <Card fluid>
@@ -24,12 +25,12 @@ function Post({post: {description, image, createdAt, tags, id, username, likeCou
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                {/* <LikeButton user={user} post={{id, likes, likeCount}}/> */}
+                <LikeButton id={id} likeCount={likeCount} likes={likes}/>
                 <Button basic size='medium' className="tertiary" style={{paddingLeft: 10, paddingRight: 10 }}>
                     <Icon name='comment outline'/>
-                    {commentCount}
+                    {commentsCount}
                 </Button>
-                {/* {user && user.username === username && (<DeleteButton postId={id}/>)} */}
+                    {user && user.username === username  && (<DeleteButton postId={id}/>)}
             </Card.Content>
         </Card>
     )

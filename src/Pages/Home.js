@@ -1,13 +1,21 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Container, Grid, Dimmer, Loader} from 'semantic-ui-react'
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux';
+import { useDispatch } from "react-redux"
 
+
+import { getPosts } from "../actions/posts.actions"
 import Post from '../components/Post'
-
 
 function Home() {
 
-    const posts = useSelector((state) => state.posts)
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getPosts());
+    }, [dispatch]);
+
+    const posts = useSelector((state) => state.posts.reverse());
 
     console.log(posts)
    
