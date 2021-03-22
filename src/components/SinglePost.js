@@ -32,7 +32,7 @@ function SignlePost({
           <Feed.Event>
             <Feed.Label image="https://sun9-15.userapi.com/impf/d2yLRODEiinlDkERStY8EyoODQUJlJvpDGO3Nw/HQbcKraJFo0.jpg?size=438x510&quality=96&sign=ae2fa483d9d1e1097c8ce8ff8cc29b20&type=album" />
             <Feed.Content>
-              <Feed.Date content={moment(createdAt).fromNow()} />
+              <Feed.Date content={moment(createdAt).fromNow()}/> 
               <Feed.Summary>{username}</Feed.Summary>
             </Feed.Content>
           </Feed.Event>

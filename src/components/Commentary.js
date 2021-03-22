@@ -4,6 +4,9 @@ import moment from 'moment'
 import { Link } from 'react-router-dom'
 
 function Commentary( {user, comment: {username, createdAt, body}}) {
+
+    
+
     return (
         <Comment>
             <Comment.Avatar 

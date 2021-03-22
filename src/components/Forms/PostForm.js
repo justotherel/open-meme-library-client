@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Container } from "semantic-ui-react";
+import { Form, Button, Card, Container } from "semantic-ui-react";
 import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
 import ReactTagInput from "@pathofdev/react-tag-input";
@@ -26,7 +26,7 @@ const PostForm = () => {
   if (!user?.id) {
     console.log(user);
     return (
-      <Container style={{width: 800}}>
+      <Container style={{ width: 800 }}>
         <h1>
           Bitch you're trying to do something you're not authorized for. Get an
           account
@@ -36,8 +36,9 @@ const PostForm = () => {
   }
 
   return (
-    <Container style={{ width: 400 }}>
-      <Form onSubmit={handleSubmit}>
+    <Container>
+    <Card fluid>
+      <Form onSubmit={handleSubmit} style={{padding: 20}}>
         <h2>Create a post</h2>
         <Form.Field>
           <label>Description</label>
@@ -50,6 +51,8 @@ const PostForm = () => {
             }
           />
         </Form.Field>
+        <Form.Field>
+        <label>Tags</label>
         <ReactTagInput
           placeholder="Add rlevant tags"
           editable={true}
@@ -60,7 +63,9 @@ const PostForm = () => {
             setPostData({ ...postData, tags: newTags });
           }}
         />
+        </Form.Field>
         <Form.Field>
+          <label>Image</label>
           <FileBase
             type="file"
             multiple={false}
@@ -71,6 +76,7 @@ const PostForm = () => {
           Submit
         </Button>
       </Form>
+    </Card>
     </Container>
   );
 };
