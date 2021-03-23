@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button, Icon } from 'semantic-ui-react'
 import {useDispatch} from 'react-redux'
 
-import {likePost} from '../../actions/posts.actions'
+import {likePost} from 'actions/posts.actions'
 
 function LikeButton({ id, likeCount, likes }) {
 

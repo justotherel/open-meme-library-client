@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { Container, Grid, Dimmer, Loader, GridColumn } from "semantic-ui-react";
+import { Container, Grid, Dimmer, Loader } from "semantic-ui-react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
-import { getPosts } from "../actions/posts.actions";
-import Post from "../components/Post";
-import Sidebar from "../components/Sidebar/Sidebar";
+import { getPosts } from "actions/posts.actions.js"
+import Post from "components/PostCard/PostCard";
+import Sidebar from "components/Sidebar/Sidebar";
 
 function Home() {
   const dispatch = useDispatch();
@@ -14,20 +14,18 @@ function Home() {
     dispatch(getPosts());
   }, [dispatch]);
 
-  const posts = useSelector((state) => state.posts.reverse());
-
-  console.log(posts);
-
+  const posts = useSelector((state) => state.posts)
+  
   return (
     <Container style={{width: 950}}>
-    <Grid columns={2}>
+    <Grid columns={2} style={{marginTop: 0}}>
       <Grid.Row >
-        <Grid.Column verticalAlign='top' width={4} style={{padding: 10}}>
+        <Grid.Column verticalAlign='top' width={4} style={{}}>
           <Container>
           <Sidebar />
           </Container>
         </Grid.Column>
-        <Grid.Column width={8} style={{paddingLeft: 0}}>
+        <Grid.Column width={8}>
           {!posts.length ? (
             <Container>
               <Dimmer inverted active>
@@ -37,8 +35,8 @@ function Home() {
           ) : (
             posts &&
             posts.map((post) => (
-              <Grid.Column key={post.id} style={{ padding: 10 }}>
-                <Post post={post} />
+              <Grid.Column key={post._id} style={{ padding: 10 }}>
+                <Post key={post._id} post={post} />
               </Grid.Column>
             ))
           )}

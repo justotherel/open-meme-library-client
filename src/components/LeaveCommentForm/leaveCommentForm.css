@@ -1,0 +1,15 @@
+.left-item{
+    padding-left: 0px !important;
+}
+
+.right-item{
+    padding-right: 0px !important;
+}
+
+.avatar-my  {
+    margin-top: 0 !important;
+}
+
+.avatar-my img {
+    border-radius: 50% !important;
+}

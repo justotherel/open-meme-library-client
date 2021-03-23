@@ -11,7 +11,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
 
-import { LOGOUT } from "../constants/actionTypes";
+import { LOGOUT } from "constants/actionTypes";
 
 function Navbar() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -75,7 +75,7 @@ function Navbar() {
     </Sticky>
   ) : (
     <Sticky>
-      <Menu Secondary className="bg-white" borderless>
+      <Menu secondary className="bg-white" borderless>
         <Container style={{ width: 950 }}>
           <Menu.Item name="Open Meme Library" as={Link} to="/">
             <h3>Open Meme Library</h3>

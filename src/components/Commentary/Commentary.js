@@ -3,6 +3,8 @@ import {Comment} from 'semantic-ui-react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 
+import './avatar.css'
+
 function Commentary( {user, comment: {username, createdAt, body}}) {
 
     
@@ -11,7 +13,7 @@ function Commentary( {user, comment: {username, createdAt, body}}) {
         <Comment>
             <Comment.Avatar 
                 src='https://sun9-74.userapi.com/impf/0rfTdZArUW6L1GF5J1f_7mi7mhWFARZEOqIx_Q/VUIg41E6BCU.jpg?size=533x533&quality=96&sign=c5ccb04ee1032d9a4a9028f85ffc9fe8&type=album' 
-                className='avatar'    
+                className='avatar'
             />
             <Comment.Content>
                 <Comment.Author as={Link} to={`/users/${username}`}>{username}</Comment.Author>

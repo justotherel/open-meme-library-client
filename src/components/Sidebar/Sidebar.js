@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { signin } from "../../actions/auth.actions";
+import { signin } from "actions/auth.actions";
 import "./sidebar.css";
 
 function Sidebar() {
@@ -40,7 +40,6 @@ function Sidebar() {
         <Button
           size="big"
           basic
-          icon
           as={Link}
           to={`users/${user.username}`}
           content="My profile"
@@ -49,7 +48,6 @@ function Sidebar() {
         <Button
           size="big"
           basic
-          icon
           as={Link}
           to="/feed"
           content="Feed"
@@ -58,7 +56,6 @@ function Sidebar() {
         <Button
           size="big"
           basic
-          icon
           as={Link}
           to="/create"
           content="Create new post"

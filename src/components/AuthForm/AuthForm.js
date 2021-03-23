@@ -1,13 +1,21 @@
 import React, { useState } from "react";
-import { Button, Container, Form, Card, Grid } from "semantic-ui-react";
+import {
+  Button,
+  Container,
+  Form,
+  Card,
+  Grid,
+  Divider,
+} from "semantic-ui-react";
 import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { AUTH } from "../../constants/actionTypes";
-import { signin, signup } from "../../actions/auth.actions";
-import Input from "./Input";
+import { AUTH } from "constants/actionTypes";
+import { signin, signup } from "actions/auth.actions";
+import Input from "components/Input/Input";
+
 import "./authForm.css";
 
 function AuthForm() {
@@ -55,11 +63,11 @@ function AuthForm() {
 
   return (
     <>
-      <Container style={{ width: 350, height: 180, marginTop: 20}}>
+      <Container style={{ width: 350, height: 180, marginTop: 20 }}>
         <Card fluid style={{ padding: 20 }}>
           <Form onSubmit={handleLoginSubmit}>
-            <Grid columns={2} >
-              <Container style={{width: 350}} >
+            <Grid columns={2}>
+              <Container style={{ width: 350 }}>
                 <Grid.Row>
                   <Input
                     name="username"
@@ -81,7 +89,7 @@ function AuthForm() {
                     <Button primary type="submit">
                       Log in
                     </Button>
-                    <Button  as={Link} to="/forgotpassword">
+                    <Button as={Link} to="/forgotpassword">
                       Forgot your password?
                     </Button>
                   </Grid.Column>
@@ -95,12 +103,10 @@ function AuthForm() {
             <Grid>
               <Container style={{ width: 400 }}>
                 <Grid.Row textAlign="center" className="centered">
-                  {/* <div className="centered ui header"> */}
                   <h3>First time?</h3>
                   <Card.Meta>
                     <h5>Create a new account</h5>
                   </Card.Meta>
-                  {/* </div> */}
                 </Grid.Row>
                 <Grid.Row>
                   <Input
@@ -144,9 +150,7 @@ function AuthForm() {
                   </Button>
                 </Grid.Row>
                 <Grid.Row textAlign="center">
-                  <lavel>
-                    <b>OR</b>
-                  </lavel>
+                <Divider fitted horizontal>Or</Divider>
                 </Grid.Row>
                 <Grid.Row>
                   <GoogleLogin

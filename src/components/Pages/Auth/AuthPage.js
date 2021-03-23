@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Grid } from "semantic-ui-react";
-import AuthForm from "../components/Forms/AuthForm";
 
+import AuthForm from "components/AuthForm/AuthForm";
 import "./authPage.css"
 
 function Auth() {

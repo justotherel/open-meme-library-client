@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Confirm, Loader, Modal } from "semantic-ui-react";
 import { useDispatch } from "react-redux";
 
-import { deletePost } from "../../actions/posts.actions";
+import { deletePost } from "actions/posts.actions";
 
 function DeleteButton({ postId, callback }) {
   const [confirmOpen, setConfirmOpen] = useState(false);

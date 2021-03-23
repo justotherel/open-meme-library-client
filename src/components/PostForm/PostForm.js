@@ -4,7 +4,7 @@ import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
 import ReactTagInput from "@pathofdev/react-tag-input";
 
-import { createPost } from "../../actions/posts.actions";
+import { createPost } from "actions/posts.actions";
 
 const PostForm = () => {
   const [postData, setPostData] = useState({
@@ -24,7 +24,6 @@ const PostForm = () => {
   };
 
   if (!user?.id) {
-    console.log(user);
     return (
       <Container style={{ width: 800 }}>
         <h1>
@@ -36,7 +35,7 @@ const PostForm = () => {
   }
 
   return (
-    <Container>
+    <Container style={{marginTop: 20}}>
     <Card fluid>
       <Form onSubmit={handleSubmit} style={{padding: 20}}>
         <h2>Create a post</h2>

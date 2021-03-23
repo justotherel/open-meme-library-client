@@ -3,17 +3,15 @@ import { Container, Grid } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { fetchPost } from "../api/index";
-
-import { getPost } from "../actions/posts.actions";
-import SignlePost from "../components/SinglePost";
+import { fetchPost } from "api/index";
+import { getPost } from "actions/posts.actions";
+import SignlePost from "components/SignlePost/SinglePost";
 
 function PostPage() {
   const { id } = useParams();
   
   const post = useSelector((state) => (id ? state.posts.find((post) => post._id === id) : null));
-  console.log(post)
-
+  
   // useEffect(() => {
   //   // POST request using axios inside useEffect React hook
   //   fetchPost(id).then((response) => {

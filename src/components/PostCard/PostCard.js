@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 import moment from 'moment'
 
 
-import LikeButton from './Buttons/LikeButton'
-import DeleteButton from './Buttons/DeleteButton'
+import LikeButton from 'components/LikeButton/LikeButton'
+import DeleteButton from 'components/DeleteButton/DeleteButton'
  
 function Post({post: {description, image, createdAt, tags, _id, username, likeCount, commentsCount, likes}}) {
     
@@ -21,7 +21,7 @@ function Post({post: {description, image, createdAt, tags, _id, username, likeCo
                     <span className='date'>{moment(createdAt).fromNow()}</span>
                 </Card.Meta>
                 <Card.Description>
-                    {tags.map(function(tag){ return <Label style={{margin: 2}}>{tag}</Label>})}
+                    {tags.map(function(tag){ return <Label as={Link} to={`/tags/${tag}`} style={{margin: 2}}>{tag}</Label>})}
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
