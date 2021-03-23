@@ -9,11 +9,7 @@ import "./leaveCommentForm.css";
 function LeaveCommentForm({ postId }) {
   const user = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
-
-  console.log()
-
   const profilePic = user?.result ? user.result.imageUrl : user.profilePic ?? defaultPic
-
   const [commentData, setCommentData] = useState({
     body: "",
     username: user.username,
