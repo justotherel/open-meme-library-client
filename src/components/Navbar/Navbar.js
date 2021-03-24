@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
 
 import { LOGOUT } from "constants/actionTypes";
+import './navbar.css'
 
 function Navbar() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -22,7 +23,9 @@ function Navbar() {
   const logout = () => {
     dispatch({ type: LOGOUT });
     setUser(null);
-    history.push("/");
+    window.location.reload();
+    history.push("/feed");
+
   };
 
   useEffect(() => {
@@ -41,7 +44,7 @@ function Navbar() {
     <Sticky>
       <Menu secondary className="bg-white" borderless>
         <Container style={{ width: 950 }}>
-          <Menu.Item name="Open Meme Library" as={Link} to="/">
+          <Menu.Item name="Open Meme Library" as={Link} to="/feed" className='logo'>
             <h3>Open Meme Library</h3>
           </Menu.Item>
           <Menu.Item>
@@ -77,7 +80,7 @@ function Navbar() {
     <Sticky>
       <Menu secondary className="bg-white" borderless>
         <Container style={{ width: 950 }}>
-          <Menu.Item name="Open Meme Library" as={Link} to="/">
+          <Menu.Item name="Open Meme Library" as={Link} to="/feed" className='logo'>
             <h3>Open Meme Library</h3>
           </Menu.Item>
           <Menu.Item>
@@ -98,7 +101,7 @@ function Navbar() {
               size="tiny"
               primary
               as={Link}
-              to="/auth"
+              to="/"
             >
               Register
             </Button>

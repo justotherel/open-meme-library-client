@@ -10,6 +10,15 @@ export const getPosts = () => async (dispatch) => {
   }
 }
 
+export const getPostsByTag = (tag) => async (dispatch) => {
+  try {
+    const {data} = await api.fetchPostsByTag(tag)
+    dispatch({ type: FETCH_ALL, payload: data });
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const getPost = (id) => async (dispatch) => {
   try {
     const {data} = await api.fetchPost(id)

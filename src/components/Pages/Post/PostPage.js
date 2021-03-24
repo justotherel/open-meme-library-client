@@ -19,14 +19,14 @@ import image from "images/image.png";
 
 function PostPage() {
   const { id } = useParams();
-
-  // const post = useSelector((state) => (id ? state.posts.find((post) => post._id === id) : null));
   const [post, setPost] = useState(null);
+  const [profilePic, setProfilePic] = useState(null)
 
   useEffect(() => {
     // POST request using axios inside useEffect React hook
     fetchPost(id).then((response) => {
-      setPost(response.data);
+      setPost(response.data.post);
+      setProfilePic(response.data.profilePic)
     });
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, [id]);
@@ -48,7 +48,6 @@ function PostPage() {
         </Dimmer>
         <Image src={image} wrapped />
       </Dimmer.Dimmable>
-
       <Card.Content>
         <Card.Description>
           <p>
@@ -63,7 +62,7 @@ function PostPage() {
     <Grid centered columns={2}>
       <Grid.Column al="center">
         <Container stryle={{ width: 800 }}>
-          {post && !post.length ? <SignlePost post={post} /> : loading}
+          {post && !post.length ? <SignlePost post = {post} /> : loading}
         </Container>
       </Grid.Column>
     </Grid>

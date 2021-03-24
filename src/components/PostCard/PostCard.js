@@ -3,7 +3,6 @@ import {Card, Icon, Label, Image, Button} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 import moment from 'moment'
 
-
 import LikeButton from 'components/LikeButton/LikeButton'
 import DeleteButton from 'components/DeleteButton/DeleteButton'
  
@@ -11,13 +10,14 @@ function Post({post: {description, image, createdAt, tags, _id, username, likeCo
     
     const user = JSON.parse(localStorage.getItem('profile'))
     const id = _id
+    const toPost = (user?.token || user?.result.token) ? `/posts/${id}` : '/'
 
     return (
         <Card fluid>
-            <Image src={image} wrapped ui={false} as={Link} to={`/posts/${id}`}  />
+            <Image src={image} wrapped ui={false} as={Link} to={toPost}  />
             <Card.Content>
                 <Card.Header>{description}</Card.Header>
-                <Card.Meta as={Link} to={`/posts/${id}`}>
+                <Card.Meta as={Link} to={toPost}>
                     <span className='date'>{moment(createdAt).fromNow()}</span>
                 </Card.Meta>
                 <Card.Description>

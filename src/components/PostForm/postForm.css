@@ -1,0 +1,4 @@
+.react-tag-input__input input {
+    outline: none !important;
+    border: 0 !important;
+}

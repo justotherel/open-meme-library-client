@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import ReactTagInput from "@pathofdev/react-tag-input";
 
 import { createPost } from "actions/posts.actions";
+import './postForm.css'
 
 const PostForm = () => {
   const [postData, setPostData] = useState({
@@ -50,7 +51,6 @@ const PostForm = () => {
             }
           />
         </Form.Field>
-        <Form.Field>
         <label>Tags</label>
         <ReactTagInput
           placeholder="Add rlevant tags"
@@ -62,7 +62,6 @@ const PostForm = () => {
             setPostData({ ...postData, tags: newTags });
           }}
         />
-        </Form.Field>
         <Form.Field>
           <label>Image</label>
           <FileBase

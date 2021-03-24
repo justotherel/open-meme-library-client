@@ -15,7 +15,7 @@ import Navbar from "components/Navbar/Navbar";
 import CreatePost from "components/Pages/CreatePostPage/CreatePostPage";
 import PostPage from "components/Pages/Post/PostPage";
 import Auth from "components/Pages/Auth/AuthPage";
-import Home from "components/Pages/Home/HomePage";
+import Feed from "components/Pages/Feed/FeedPage";
 
 import "./App.css";
 
@@ -30,16 +30,17 @@ function App() {
 
   const routes = isAuthenticated ? (
     <>
-      <Route exact path="/" component={Home} />
+      <Route  path="/feed" component={Feed} />
       <Route exact path="/create" component={CreatePost} />
       <Route exact path="/posts/:id" component={PostPage} />
-      <Redirect to="/" />
+      <Route exact path="/tags/:tag" component={Feed} />
+      <Redirect to="/feed" />
     </>
-  ) : (
+  ) : (   
     <>
-      <Route exact path="/auth" component={Auth} />
-      <Route exact path="/" component={Home} />
-      <Redirect to="/auth" />
+      <Route exact path="/" component={Auth} />
+      <Route exact path="/feed" component={Feed} />
+      <Redirect to="/" />
     </>
   );
 
