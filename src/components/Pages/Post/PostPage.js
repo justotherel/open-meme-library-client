@@ -62,7 +62,7 @@ function PostPage() {
     <Grid centered columns={2}>
       <Grid.Column al="center">
         <Container stryle={{ width: 800 }}>
-          {post && !post.length ? <SignlePost post = {post} /> : loading}
+          {post && !post.length ? <SignlePost post = {post} profilePic={profilePic} /> : loading}
         </Container>
       </Grid.Column>
     </Grid>

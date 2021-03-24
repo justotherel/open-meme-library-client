@@ -16,10 +16,11 @@ import LikeButton from "components/LikeButton/LikeButton";
 import DeleteButton from "components/DeleteButton/DeleteButton";
 import LeaveCommentForm from "components/LeaveCommentForm/LeaveCommentForm";
 
-import './singlePost.css'
+import "./singlePost.css";
 
-function SignlePost({
-  post: {
+function SignlePost(props) {
+
+  const {
     description,
     image,
     createdAt,
@@ -30,8 +31,8 @@ function SignlePost({
     comments,
     commentsCount,
     likes,
-  },
-}) {
+  } = props.post;
+  const profilePic = props.profilePic
   const user = JSON.parse(localStorage.getItem("profile"));
   const id = _id;
 
@@ -40,7 +41,7 @@ function SignlePost({
       <Card.Content>
         <Feed>
           <Feed.Event>
-            <Feed.Label image="https://sun9-15.userapi.com/impf/d2yLRODEiinlDkERStY8EyoODQUJlJvpDGO3Nw/HQbcKraJFo0.jpg?size=438x510&quality=96&sign=ae2fa483d9d1e1097c8ce8ff8cc29b20&type=album" />
+            <Feed.Label image={profilePic} />
             <Feed.Content>
               <Feed.Date content={moment(createdAt).fromNow()} />
               <Feed.Summary>{username}</Feed.Summary>
@@ -60,7 +61,11 @@ function SignlePost({
         <Card.Header>{description}</Card.Header>
         <Card.Description>
           {tags.map(function (tag) {
-            return <Label as={Link} to={`/tags/${tag}`} style={{ margin: 2 }}>{tag}</Label>;
+            return (
+              <Label as={Link} to={`/tags/${tag}`} style={{ margin: 2 }}>
+                {tag}
+              </Label>
+            );
           })}
         </Card.Description>
       </Card.Content>
@@ -79,12 +84,10 @@ function SignlePost({
       </Card.Content>
       <Card.Content>
         <Comment.Group>
-            {comments.map((comment) => (
-              <Commentary user={user} comment={comment} />
-            ))}
-            {user && (
-              <LeaveCommentForm postId={id}/>
-            )}
+          {comments.map((comment) => (
+            <Commentary user={user} comment={comment} />
+          ))}
+          {user && <LeaveCommentForm postId={id} />}
         </Comment.Group>
       </Card.Content>
     </Card>

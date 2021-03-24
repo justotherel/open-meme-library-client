@@ -59,6 +59,9 @@ const PostForm = () => {
           removeOnBackspace={true}
           tags={postData.tags}
           onChange={(newTags) => {
+            newTags = newTags.map((tag) => (
+              tag.toLocaleLowerCase()
+            ))
             setPostData({ ...postData, tags: newTags });
           }}
         />
