@@ -7,6 +7,7 @@ import {
   Button,
   Icon,
   Comment,
+  Loader,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import moment from "moment";
@@ -19,7 +20,6 @@ import LeaveCommentForm from "components/LeaveCommentForm/LeaveCommentForm";
 import "./singlePost.css";
 
 function SignlePost(props) {
-
   const {
     description,
     image,
@@ -32,7 +32,8 @@ function SignlePost(props) {
     commentsCount,
     likes,
   } = props.post;
-  const profilePic = props.profilePic
+  const profilePic = props.profilePic;
+  const commentators = props.commentators;
   const user = JSON.parse(localStorage.getItem("profile"));
   const id = _id;
 
@@ -84,9 +85,20 @@ function SignlePost(props) {
       </Card.Content>
       <Card.Content>
         <Comment.Group>
-          {comments.map((comment) => (
-            <Commentary user={user} comment={comment} />
-          ))}
+          {commentators ? (
+            comments.map((comment) => (
+              <Commentary
+                user={user}
+                comment={comment}
+                profilePic={
+                  commentators.find(commentator => commentator.commentator === comment.username).image
+                }
+              />
+            ))
+          ) : (
+            <Loader>Loading</Loader>
+          )}
+
           {user && <LeaveCommentForm postId={id} />}
         </Comment.Group>
       </Card.Content>

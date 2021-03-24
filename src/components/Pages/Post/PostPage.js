@@ -18,18 +18,20 @@ import mediaP from "images/media-paragraph.png";
 import image from "images/image.png";
 
 function PostPage() {
-  const { id } = useParams();
-  const [post, setPost] = useState(null);
+  const { id } = useParams()
+  const [post, setPost] = useState(null)
   const [profilePic, setProfilePic] = useState(null)
+  const [commentators, setCommentators] = useState(null)
 
   useEffect(() => {
     // POST request using axios inside useEffect React hook
     fetchPost(id).then((response) => {
-      setPost(response.data.post);
+      setPost(response.data.post)
       setProfilePic(response.data.profilePic)
+      setCommentators(response.data.profilePics)
     });
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  }, [id]);
+  }, [id])
 
   const loading = (
     <Card style={{ width: 500, marginTop: 15 }}>
@@ -62,7 +64,7 @@ function PostPage() {
     <Grid centered columns={2}>
       <Grid.Column al="center">
         <Container stryle={{ width: 800 }}>
-          {post && !post.length ? <SignlePost post = {post} profilePic={profilePic} /> : loading}
+          {(post && !post?.id) ? <SignlePost post = {post} profilePic={profilePic} commentators={commentators} /> : loading}
         </Container>
       </Grid.Column>
     </Grid>
