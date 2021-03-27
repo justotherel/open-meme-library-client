@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Container, Grid, Dimmer, Loader } from "semantic-ui-react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { getPosts, getPostsByTag } from "actions/posts.actions.js";
 import Post from "components/PostCard/PostCard";

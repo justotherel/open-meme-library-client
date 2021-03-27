@@ -8,9 +8,8 @@ import {
   Divider,
 } from "semantic-ui-react";
 import { GoogleLogin } from "react-google-login";
-import { Link } from "react-router-dom";
+import { Link, useHistory} from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 import { AUTH } from "constants/actionTypes";
 import { signin, signup } from "actions/auth.actions";

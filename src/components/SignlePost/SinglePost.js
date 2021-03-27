@@ -8,6 +8,7 @@ import {
   Icon,
   Comment,
   Loader,
+  Popup
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import moment from "moment";
@@ -50,14 +51,7 @@ function SignlePost(props) {
           </Feed.Event>
         </Feed>
       </Card.Content>
-      <Image
-        id="image"
-        src={image}
-        wrapped
-        ui={false}
-        as={Link}
-        to={`/posts/${id}`}
-      />
+      <Image id="image" src={image} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{description}</Card.Header>
         <Card.Description>
@@ -81,6 +75,25 @@ function SignlePost(props) {
           <Icon name="comment outline" />
           {commentsCount}
         </Button>
+        <Popup
+          trigger={<Button
+            basic
+            size="medium"
+            className="tertiary"
+            style={{ paddingLeft: 10, paddingRight: 10 }}
+            onClick={() => {
+              navigator.clipboard.writeText(image);
+            }}
+          >
+            <Icon name="share" />
+            Get link
+          </Button>}
+          content="Copied to the clipboard"
+          on="click"
+          hideOnScroll
+          size='tiny'
+        />
+        
         {user && user.username === username && <DeleteButton postId={id} />}
       </Card.Content>
       <Card.Content>
@@ -91,7 +104,10 @@ function SignlePost(props) {
                 user={user}
                 comment={comment}
                 profilePic={
-                  commentators.find(commentator => commentator.commentator === comment.username).image
+                  commentators.find(
+                    (commentator) =>
+                      commentator.commentator === comment.username
+                  ).image
                 }
               />
             ))

@@ -19,6 +19,7 @@ import image from "images/image.png";
 
 function PostPage() {
   const { id } = useParams()
+  console.log(id)
   const [post, setPost] = useState(null)
   const [profilePic, setProfilePic] = useState(null)
   const [commentators, setCommentators] = useState(null)

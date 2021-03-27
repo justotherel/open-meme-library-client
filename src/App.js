@@ -14,6 +14,7 @@ import Navbar from "components/Navbar/Navbar";
 
 import CreatePost from "components/Pages/CreatePostPage/CreatePostPage";
 import PostPage from "components/Pages/Post/PostPage";
+import LoginPage from 'components/Pages/Login/LoginPage'
 import Auth from "components/Pages/Auth/AuthPage";
 import Feed from "components/Pages/Feed/FeedPage";
 
@@ -40,7 +41,8 @@ function App() {
     <>
       <Route exact path="/" component={Auth} />
       <Route exact path="/feed" component={Feed} />
-      <Redirect to="/" />
+      <Route exact path="/login" component={LoginPage} />
+      {/* <Redirect to="/" /> */}
     </>
   );
 

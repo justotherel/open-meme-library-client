@@ -10,7 +10,7 @@ function Post({post: {description, image, createdAt, tags, _id, username, likeCo
     
     const user = JSON.parse(localStorage.getItem('profile'))
     const id = _id
-    const toPost = (user?.token || user?.result.token) ? `/posts/${id}` : '/'
+    const toPost = (user?.token || user?.result?.token) ? `/posts/${id}` : '/'
 
     return (
         <Card fluid>

@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
 
 import { LOGOUT } from "constants/actionTypes";
+import deafultPic from 'images/default.jpg'
 import './navbar.css'
 
 function Navbar() {
@@ -61,7 +62,7 @@ function Navbar() {
               src={
                 user.profilePic
                   ? user.profilePic
-                  : "https://sun9-40.userapi.com/impf/yY2B_SB8yqDDu3GEmIQW3VcsuDXkXv6i5Yq2ZQ/nV_iFXiTmeE.jpg?size=572x572&quality=96&sign=87395866e3b4df6fb8db04990cdb89cd"
+                  : deafultPic
               }
               alt="user avatar"
             />
