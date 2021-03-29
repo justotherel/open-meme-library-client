@@ -1,5 +1,5 @@
 .text-style p {
-    letter-spacing: .1rem !important;   
+    letter-spacing: 0.1rem !important;
     line-height: 1.6 !important;
     color: #696969;
 }

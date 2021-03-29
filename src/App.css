@@ -1,63 +1,63 @@
 * > body {
-  margin: 0;
-  box-sizing: border-box;
-  background-color: #edeef0;
-  height: auto;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #edeef0;
+    height: auto;
 }
 
 .bg-white {
-  background-color: #fff !important;
+    background-color: #fff !important;
 }
 
-.input-bg input  {
-  background-color: #edeef0 !important;
+.input-bg input {
+    background-color: #edeef0 !important;
 }
 
 .ui.basic.button.tertiary {
-  box-shadow: none !important;
-  outline: none !important;
-  border: none !important;
-  background: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+    background: none !important;
 }
 
 .round-btn {
-  border-radius: 16px !important;
-  padding-top: 10px !important;
+    border-radius: 16px !important;
+    padding-top: 10px !important;
 }
 
 .avatar {
-  border-radius: 50% !important;
-  /* max-width: 100% !important;
+    border-radius: 50% !important;
+    /* max-width: 100% !important;
   max-height: 100% !important; */
 }
 
 .centered {
-  align-items: center !important;
+    align-items: center !important;
 }
 
 .centered h3 {
-  margin: 0;
+    margin: 0;
 }
 
 .forgot-pass-btn {
-  color: #1678c2 !important;
+    color: #1678c2 !important;
 }
 
 .forgot-pass-btn :hover {
-  color: #1678c2 !important;
-  text-decoration: underline !important;
+    color: #1678c2 !important;
+    text-decoration: underline !important;
 }
 
 .send-btn {
-  padding-left: 0px !important;
-  margin: 0px !important;
+    padding-left: 0px !important;
+    margin: 0px !important;
 }
 
 .comment-input-box {
-  width: 100% !important;
-  overflow: auto !important;
+    width: 100% !important;
+    overflow: auto !important;
 }
 
 .align-left {
-  float: left !important;
+    float: left !important;
 }
