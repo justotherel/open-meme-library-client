@@ -7,6 +7,7 @@ export const FETCH = 'FETCH'
 export const LIKE = 'LIKE'
 export const CREATE_COMMENT = 'CREATE_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
+export const FETCH_COMMENTS = 'FETCH_COMMENTS'
 
 //Log in & Sign in
 export const AUTH = 'AUTH'

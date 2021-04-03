@@ -7,11 +7,12 @@ import {
     FETCH,
     CREATE_COMMENT,
     DELETE_COMMENT,
+    FETCH_COMMENTS,
 } from 'constants/actionTypes'
 
-export const getPosts = () => async (dispatch) => {
+export const getPosts = (page, amount) => async (dispatch) => {
     try {
-        const { data } = await api.fetchPosts()
+        const { data } = await api.fetchPosts(page, amount)
         dispatch({ type: FETCH_ALL, payload: data })
     } catch (error) {
         console.log(error)
@@ -81,6 +82,15 @@ export const deleteComment = (id, commentId) => async (dispatch) => {
     try {
         const { data } = await api.deleteComment(id, commentId)
         dispatch({ type: DELETE_COMMENT, payload: data })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const fetchComments = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.fetchComments(id)
+        dispatch({ type: FETCH_COMMENTS, payload: data })
     } catch (error) {
         console.log(error)
     }

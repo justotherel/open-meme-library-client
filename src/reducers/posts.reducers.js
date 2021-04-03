@@ -6,12 +6,14 @@ import {
     DELETE,
     CREATE_COMMENT,
     DELETE_COMMENT,
+    FETCH_COMMENTS,
 } from '../constants/actionTypes'
 
 const postReducers = (posts = [], action) => {
     switch (action.type) {
         case FETCH_ALL:
-            return action.payload
+            posts = [...posts, ...action.payload.posts]
+            return posts
         case FETCH:
             return posts.map((post) =>
                 post._id === action.payload._id ? action.payload : post,
@@ -35,6 +37,13 @@ const postReducers = (posts = [], action) => {
             return posts.map((post) =>
                 post._id === action.payload._id ? action.payload : post,
             )
+        case FETCH_COMMENTS:
+            return posts.map((post) =>
+                post._id === action.payload._id
+                    ? action.payload.comments
+                    : post.comments,
+            )
+
         // ...posts
         //   .map((post) =>
         //     post._id === action.payload._id ? action.payload : post

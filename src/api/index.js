@@ -12,7 +12,9 @@ API.interceptors.request.use((req) => {
     return req
 })
 
-export const fetchPosts = () => API.get('/posts')
+export const fetchPosts = (page, amount) =>
+    API.get(`/posts/page/${page}/${amount}`)
+
 export const fetchPost = (id) => API.get(`/posts/${id}`)
 export const fetchPostsByTag = (tag) => API.get(`posts/tags/${tag}`)
 
