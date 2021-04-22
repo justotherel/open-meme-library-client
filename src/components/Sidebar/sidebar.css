@@ -1,3 +1,17 @@
 .row {
     padding: 0.5rem !important;
 }
+
+.item p {
+    font-size: medium;
+}
+
+.sidebarIcon {
+    padding-top: 1.5px;
+    padding-right: 2.25rem;
+}
+
+.sidebarItem {
+    color: dimgrey
+    
+}

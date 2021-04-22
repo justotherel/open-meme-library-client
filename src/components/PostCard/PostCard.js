@@ -46,7 +46,7 @@ function Post({
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <LikeButton id={id} likeCount={likeCount} likes={likes} />
+                <LikeButton id={id} likes={likes} likeCount={likeCount}/>
                 <Button
                     basic
                     size="medium"

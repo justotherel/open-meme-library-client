@@ -40,7 +40,7 @@ const PostForm = () => {
     }
 
     return (
-        <Container style={{ marginTop: 20 }}>
+        <Container style={{ marginTop: 0, paddingTop: 10}}>
             <Card fluid>
                 <Form onSubmit={handleSubmit} style={{ padding: 20 }}>
                     <h2>Create a post</h2>

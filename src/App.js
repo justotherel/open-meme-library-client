@@ -19,6 +19,7 @@ import Auth from 'components/Pages/Auth/AuthPage'
 import Feed from 'components/Pages/Feed/FeedPage'
 
 import './App.css'
+import ProfilePage from 'components/Pages/Profile/ProfilePage'
 
 function App() {
     const user = JSON.parse(localStorage.getItem('profile'))
@@ -34,6 +35,7 @@ function App() {
             <Route exact path="/create" component={CreatePost} />
             <Route exact path="/posts/:id" component={PostPage} />
             <Route exact path="/tags/:tag" component={Feed} />
+            <Route exact path="/users/:username" component={ProfilePage} />
             <Redirect to="/feed" />
         </>
     ) : (

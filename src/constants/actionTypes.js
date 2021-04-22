@@ -8,6 +8,12 @@ export const LIKE = 'LIKE'
 export const CREATE_COMMENT = 'CREATE_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const FETCH_COMMENTS = 'FETCH_COMMENTS'
+export const FETCH_PROFILE_PICS = 'FETCH_PROFILE_PICS'
+export const FETCH_BY_USER = 'FETCH_BY_USER'
+
+// Profiles
+export const EDIT_PROFILE = 'EDIT_PROFILE'
+export const FETCH_PROFILE = 'FETCH_PROFILE'
 
 //Log in & Sign in
 export const AUTH = 'AUTH'

@@ -1,49 +1,48 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Icon } from 'semantic-ui-react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { likePost } from 'actions/posts.actions'
 
-function LikeButton({ id, likeCount, likes }) {
+function LikeButton({ id, likes, likeCount }) {
     const dispatch = useDispatch()
-    const [liked, setLiked] = useState(false)
+
     const user = JSON.parse(localStorage.getItem('profile'))
 
-    useEffect(() => {
-        if (user && likes.find((like) => like.username === user.username)) {
-            setLiked(true)
-        } else setLiked(false)
-    }, [user, likes])
+    // const [likes, setLikes] = useState(_likes)
+    const [liked, setLiked] = useState(false)
+    // const [likeCount, setLikeCount] = useState(_likeCount)
 
-    const handleLike = () => {
-        dispatch(likePost(id))
-    }
-
-    const likeBtn = user ? (
-        liked ? (
-            <Button
-                basic
-                size="medium"
-                className="tertiary"
-                style={{ paddingLeft: 10, paddingRight: 10 }}
-                onClick={handleLike}
-            >
-                <Icon name="heart" color="red" />
-                {likeCount}
-            </Button>
+    const Likes =
+        user && likes.find((like) => like.username === user.username) ? (
+            <>
+                <Button
+                    basic
+                    size="medium"
+                    className="tertiary"
+                    style={{ paddingLeft: 10, paddingRight: 10 }}
+                    onClick={() => dispatch(likePost(id))}
+                >
+                    <Icon name="heart" color="red" />
+                    {likeCount}
+                </Button>
+            </>
         ) : (
             <Button
                 basic
                 size="medium"
                 className="tertiary"
                 style={{ paddingLeft: 10, paddingRight: 10 }}
-                onClick={handleLike}
+                onClick={() => dispatch(likePost(id))}
             >
                 <Icon name="heart outline" />
                 {likeCount}
             </Button>
         )
+        
+    return user ? (
+        Likes
     ) : (
         <Button
             as={Link}
@@ -52,14 +51,11 @@ function LikeButton({ id, likeCount, likes }) {
             size="medium"
             className="tertiary"
             style={{ paddingLeft: 10, paddingRight: 10 }}
-            onClick={likePost}
         >
             <Icon name="heart outline" />
             {likeCount}
         </Button>
     )
-
-    return <>{likeBtn}</>
 }
 
 export default LikeButton

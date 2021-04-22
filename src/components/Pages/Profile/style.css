@@ -1,0 +1,23 @@
+.profilepic img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50% !important;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+
+.posts {
+    max-height: 480px;
+    overflow: auto;
+    border: 2px solid #f3f3f3;
+    padding-left: 16px;
+    /* Use this rule for firefox, to hide the scrollbar */
+    scrollbar-width: none !important;
+}
+
+.close-btn {
+    text-decoration: underline !important;
+    padding-left: 1.5rem;
+}
+
+

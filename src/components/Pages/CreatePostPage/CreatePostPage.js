@@ -7,18 +7,14 @@ import Sidebar from 'components/Sidebar/Sidebar'
 function CreatePost() {
     return (
         <Container style={{ width: 950 }}>
-            <Grid columns={2}>
+            <Grid columns={2} style={{ marginTop: 0 }}>
                 <Grid.Row>
-                    <Grid.Column
-                        verticalAlign="top"
-                        width={4}
-                        style={{ padding: 10 }}
-                    >
+                    <Grid.Column verticalAlign="top" width={4} style={{}}>
                         <Container>
                             <Sidebar />
                         </Container>
                     </Grid.Column>
-                    <Grid.Column width={8} style={{ paddingLeft: 0 }}>
+                    <Grid.Column width={8}>
                         <PostForm />
                     </Grid.Column>
                 </Grid.Row>

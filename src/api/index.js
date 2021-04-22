@@ -12,11 +12,16 @@ API.interceptors.request.use((req) => {
     return req
 })
 
-export const fetchPosts = (page, amount) =>
-    API.get(`/posts/page/${page}/${amount}`)
+// export const fetchPosts = (page, amount) =>
+//     API.get(`/posts/page/${page}/${amount}`)
 
+export const fetchPosts = () => API.get('/posts')
 export const fetchPost = (id) => API.get(`/posts/${id}`)
-export const fetchPostsByTag = (tag) => API.get(`posts/tags/${tag}`)
+export const fetchPostsByTag = (tag) => API.get(`/posts/tags/${tag}`)
+export const fetchPostsByUser = (username) => API.get(`/user/${username}/posts`)
+
+export const fetchProfile = (username) => API.get(`/profiles/${username}`)
+export const editProfile = (username, formData) => API.post(`/profiles/${username}/edit`, formData)
 
 export const createPost = (newPost) => API.post('/posts', newPost)
 export const likePost = (id) => API.patch(`/posts/${id}/likePost`)

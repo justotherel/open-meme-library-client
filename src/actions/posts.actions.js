@@ -5,14 +5,15 @@ import {
     LIKE,
     DELETE,
     FETCH,
-    CREATE_COMMENT,
-    DELETE_COMMENT,
+    FETCH_BY_USER,
     FETCH_COMMENTS,
+    ERROR
 } from 'constants/actionTypes'
 
-export const getPosts = (page, amount) => async (dispatch) => {
+export const getPosts = () => async (dispatch) => {
     try {
-        const { data } = await api.fetchPosts(page, amount)
+        const { data } = await api.fetchPosts()
+        console.log(data)
         dispatch({ type: FETCH_ALL, payload: data })
     } catch (error) {
         console.log(error)
@@ -23,6 +24,15 @@ export const getPostsByTag = (tag) => async (dispatch) => {
     try {
         const { data } = await api.fetchPostsByTag(tag)
         dispatch({ type: FETCH_ALL, payload: data })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getPostsByUser = (username) => async (dispatch) => {
+    try {
+        const { data } = await api.fetchPostsByUser(username)
+        dispatch({type: FETCH_BY_USER, payload: data})
     } catch (error) {
         console.log(error)
     }
@@ -51,7 +61,6 @@ export const likePost = (id) => async (dispatch) => {
     const user = JSON.parse(localStorage.getItem('profile'))
     try {
         const { data } = await api.likePost(id, user.token, user.username)
-
         dispatch({ type: LIKE, payload: data })
     } catch (error) {
         console.log(error)
@@ -72,7 +81,7 @@ export const createComment = (id, newComment) => async (dispatch) => {
     try {
         const { data } = await api.createComment(id, newComment)
 
-        dispatch({ type: CREATE_COMMENT, payload: data })
+        dispatch({ type: FETCH_COMMENTS, payload: data })
     } catch (error) {
         console.log(error)
     }
@@ -81,17 +90,28 @@ export const createComment = (id, newComment) => async (dispatch) => {
 export const deleteComment = (id, commentId) => async (dispatch) => {
     try {
         const { data } = await api.deleteComment(id, commentId)
-        dispatch({ type: DELETE_COMMENT, payload: data })
+        dispatch({ type: FETCH_COMMENTS, payload: data })
     } catch (error) {
         console.log(error)
     }
 }
 
-export const fetchComments = (id) => async (dispatch) => {
+export const getComments = (id) => async (dispatch) => {
     try {
         const { data } = await api.fetchComments(id)
-        dispatch({ type: FETCH_COMMENTS, payload: data })
+        dispatch({type: FETCH_COMMENTS, payload: data})
     } catch (error) {
+        dispatch(getError(error))
         console.log(error)
+    }
+}
+
+
+//Specific errors defines there
+export function getError(error) {
+    return {
+        type: ERROR,
+        data: null,
+        error: error,
     }
 }

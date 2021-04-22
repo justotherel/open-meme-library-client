@@ -1,59 +1,25 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react'
+import React, { useEffect } from 'react'
 import { Container, Grid, Dimmer, Loader } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router'
 
 import { getPosts, getPostsByTag } from 'actions/posts.actions.js'
 import Post from 'components/PostCard/PostCard'
 import Sidebar from 'components/Sidebar/Sidebar'
+import { useParams } from 'react-router'
+import PostDimmer from 'components/PostDimmer/PostDimmer'
 
 function Feed() {
-    const { tag } = useParams()
     const dispatch = useDispatch()
-
-    const amount = 5
-    const observer = useRef()
-    const [page, setPage] = useState(1)
-    const [isLoading, setIsLoading] = useState(false)
-
-    const lastPostElementRef = useCallback(
-        (node) => {
-            if (isLoading) return
-            if (observer.current) observer.current.disconnect()
-            observer.current = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    console.log('Visible')
-                    setPage((prevPage) => prevPage + 1)
-                    setIsLoading(true)
-                }
-            })
-            if (node) observer.current.observe(node)
-        },
-        [isLoading],
-    )
+    const { tag } = useParams()
 
     useEffect(() => {
         if (tag) dispatch(getPostsByTag(tag))
-        else dispatch(getPosts(page, amount))
-        setIsLoading(false)
-    }, [dispatch, tag, page, amount])
+        else dispatch(getPosts())
+    }, [dispatch, tag])
 
     const data = useSelector((state) => state.posts)
+    
     const posts = []
-
-    if (data) {
-        data.map((post) => {
-            posts.push(post._doc)
-        })
-    }
-
-    const loading = (
-        <Container>
-            <Dimmer inverted active>
-                <Loader>Loading</Loader>
-            </Dimmer>
-        </Container>
-    )
     
     return (
         <Container style={{ width: 950 }}>
@@ -65,32 +31,24 @@ function Feed() {
                         </Container>
                     </Grid.Column>
                     <Grid.Column width={8}>
-                        {posts && !posts.length ? (
-                            <Grid.Column width={8}>{loading} </Grid.Column>
+                        
+                        {data && !data.length ? (
+                            <>
+                            <PostDimmer/>
+                            <PostDimmer/>
+                            <PostDimmer/>
+                            </>
                         ) : (
-                            posts.map((post, index) => (
-                                <div
-                                    ref={
-                                        posts.length === index + 1
-                                            ? lastPostElementRef
-                                            : undefined
-                                    }
+                            data &&
+                            data.map((post) => (
+                                <Grid.Column
+                                    key={post._id}
+                                    style={{ padding: 10 }}
                                 >
-                                    <Grid.Column
-                                        width={8}
-                                        key={post._id}
-                                        style={{ padding: 10 }}
-                                    >
-                                        <Post
-                                            key={post._id}
-                                            post={post}
-                                            style={{ padding: 10 }}
-                                        />
-                                    </Grid.Column>
-                                </div>
+                                    <Post key={post._id} post={post} />
+                                </Grid.Column>
                             ))
                         )}
-                        {isLoading ? <Grid.Column width={8}>{loading} </Grid.Column> : <></>}
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

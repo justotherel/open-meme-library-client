@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     Card,
     Feed,
@@ -20,6 +20,9 @@ import DeleteButton from 'components/DeleteButton/DeleteButton'
 import LeaveCommentForm from 'components/LeaveCommentForm/LeaveCommentForm'
 
 import './singlePost.css'
+import { getComments, getPost } from 'actions/posts.actions'
+import { useDispatch, useSelector } from 'react-redux'
+
 
 function SignlePost(props) {
     const {
@@ -35,13 +38,20 @@ function SignlePost(props) {
     } = props.post
 
     const profilePic = props.profilePic
-    const comments = props.comments
-    const commentators = props.commentators
     const history = useHistory()
     const user = JSON.parse(localStorage.getItem('profile'))
     const id = _id
 
+    const dispatch = useDispatch()
     const [open, setOpen] = useState(false)
+
+    useEffect(() => {
+        dispatch(getPost(id))
+        dispatch(getComments(id))
+    }, [id])
+
+    const comments = useSelector(state => state.comments?.comments)
+    const commentators = useSelector(state => state.comments?.profilePics)
 
     const errorModal = (
         <Modal
@@ -157,7 +167,7 @@ function SignlePost(props) {
                             />
                         ))
                     ) : (
-                        <Loader>Loading</Loader>
+                        <p>Loading</p>
                     )}
 
                     {user && <LeaveCommentForm postId={id} />}

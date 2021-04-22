@@ -1,5 +1,14 @@
 import React, { useState } from 'react'
-import { Container, Button, Form, Grid, Sticky } from 'semantic-ui-react'
+import {
+    Container,
+    Button,
+    Form,
+    Grid,
+    Sticky,
+    Card,
+    Item,
+    Icon,
+} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
@@ -30,32 +39,52 @@ function Sidebar() {
 
     const content =
         user && user?.token ? (
-            <Button.Group vertical style={{ paddingTop: 10 }}>
-                <Button
-                    size="big"
-                    basic
-                    as={Link}
-                    to={`users/${user.username}`}
-                    content="My profile"
-                    icon="user circle outline"
-                />
-                <Button
-                    size="big"
-                    basic
-                    as={Link}
-                    to="/feed"
-                    content="Feed"
-                    icon="newspaper outline"
-                />
-                <Button
-                    size="big"
-                    basic
-                    as={Link}
-                    to="/create"
-                    content="Create new post"
-                    icon="pencil"
-                />
-            </Button.Group>
+            <Sticky offset={69}>
+                <Card style={{ marginTop: 10 }}>
+                    <Card.Content>
+                        <Container>
+                            <Item.Group>
+                                <Item
+                                    className="sidebarItem"
+                                    as={Link}
+                                    to={`users/${user.username}`}
+                                >
+                                    <Icon
+                                        className="sidebarIcon"
+                                        size="large"
+                                        name="user circle outline"
+                                    />
+                                    <p>My profile</p>
+                                </Item>
+                                <Item
+                                    className="sidebarItem"
+                                    as={Link}
+                                    to="/feed"
+                                >
+                                    <Icon
+                                        className="sidebarIcon"
+                                        size="large"
+                                        name="newspaper outline"
+                                    />
+                                    <p>Feed</p>
+                                </Item>
+                                <Item
+                                    className="sidebarItem"
+                                    as={Link}
+                                    to="/create"
+                                >
+                                    <Icon
+                                        className="sidebarIcon"
+                                        size="large"
+                                        name="pencil"
+                                    />
+                                    <p>Create new post</p>
+                                </Item>
+                            </Item.Group>
+                        </Container>
+                    </Card.Content>
+                </Card>
+            </Sticky>
         ) : (
             <Sticky offset={49}>
                 <Form
