@@ -40,9 +40,9 @@ function App() {
         </>
     ) : (
         <>
-            <Route path="/" component={Auth} />
-            <Route path="/feed" component={Feed} />
-            <Route path="/login" component={LoginPage} />
+            <Route exact path="/" component={Auth} />
+            <Route exact path="/feed" component={Feed} />
+            <Route exact path="/login" component={LoginPage} />
             <Redirect to="/" />
         </>
     )
