@@ -9,6 +9,7 @@ Started as a joke, this project then evolved into a university project with long
 ## About the repository
 
 This repository dedicated to the client-side of the app. Made with create-react-app.
+React app is hosted from this repo on Netlify.
 
 ## All the work on the project is currently frozen
 
