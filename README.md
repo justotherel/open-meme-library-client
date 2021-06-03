@@ -1,6 +1,6 @@
 # Open Meme Library web-application
 
-This project aims to creat an easy to use tool to sotre and look up memes
+This project aims to create an easy to use tool to sotre and look up memes
 
 ## About the project
 
